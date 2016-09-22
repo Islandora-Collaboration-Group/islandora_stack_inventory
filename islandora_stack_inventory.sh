@@ -18,7 +18,7 @@ if [ -e /etc/redhat-release ];
      # Specify OS variables
      #
      php_ini="/etc/php.ini"
-     package_query=`rpm -qa`
+     package_query="rpm -qa"
 fi
 # If not, then now check if system is a Debian / Ubuntu release
 if  [ -e /usr/bin/lsb_release ];
@@ -30,7 +30,7 @@ if  [ -e /usr/bin/lsb_release ];
      # Specify OS variables
      #
      php_ini="/etc/php5/apache2/php.ini"
-     package_query=`dpkg -l`
+     package_query="dpkg -l"
 fi
 
 #if [ ! is_redhat | ! is_debian ]
@@ -48,8 +48,8 @@ fi
 
 #fi
 # Hardware
-cat /proc/cpuinfo | grep model\ name
-cat /proc/cpuinfo | grep cpu\ cores
+cat /proc/cpuinfo | grep model\ name >> $stack_output
+cat /proc/cpuinfo | grep cpu\ cores >> $stack_output
 
 # Memory
 # cat /proc /meminfo
@@ -65,6 +65,8 @@ cat /proc/cpuinfo | grep cpu\ cores
 #
 ##- mysql
 #
+echo "" >> $stack_output
+echo "" >> $stack_output
 echo "MySQL information" >> $stack_output
 echo "=================" >> $stack_output
 echo "" >> $stack_output
@@ -78,18 +80,22 @@ echo "" >> $stack_output
 #
 ##- php
 #
+echo "" >> $stack_output
+echo "" >> $stack_output
 echo "PHP information" >> $stack_output
 echo "===============" >> $stack_output
 echo "" >> $stack_output
 php --version >> $stack_output
 echo "" >> $stack_output
-grep memory_limit $php_ini
-grep upload_max_filesize $php_ini
+grep memory_limit $php_ini >> $stack_output
+grep upload_max_filesize $php_ini >> $stack_output
 echo "" >> $stack_output
 
 #
 ##- ghostscript
 #
+echo "" >> $stack_output
+echo "" >> $stack_output
 echo "Ghostscript information" >> $stack_output
 echo "=======================" >> $stack_output
 echo "" >> $stack_output
@@ -98,6 +104,8 @@ echo "" >> $stack_output
 #
 ##- imagemagick
 #
+echo "" >> $stack_output
+echo "" >> $stack_output
 echo "ImageMagick information" >> $stack_output
 echo "=======================" >> $stack_output
 echo "" >> $stack_output
@@ -127,3 +135,5 @@ echo "" >> $stack_output
 ##- solr
 ##- fedoragsearch
 ##- djatoka
+
+cat $stack_output
