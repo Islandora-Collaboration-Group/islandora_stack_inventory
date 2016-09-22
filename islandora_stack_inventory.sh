@@ -4,6 +4,14 @@ stack_output="/tmp/stack_output.txt"
 is_redhat=0 #0 = no 1 = yes
 is_debian=0 #0 = no 1 = yes
 
+#
+# Initialize file
+#
+echo "Islandora Stack Inventory" > $stack_output
+echo "=========================" >> $stack_output
+echo " " >> $stack_output
+echo " " >> $stack_output
+
 # Future development: Safeguard detection: Am I on an Islandora Server?
 # Saves time and doesn't execute (to be developed at later date)
 
@@ -12,7 +20,7 @@ is_debian=0 #0 = no 1 = yes
 if [ -e /etc/redhat-release ];
   then
     #`cat /etc/redhat-release` > $stack_output
-     echo `cat /etc/redhat-release`
+     echo `cat /etc/redhat-release` >> $stack_output
      is_redhat=1 #0 = no 1 = yes
      #
      # Specify OS variables
@@ -24,7 +32,7 @@ fi
 if  [ -e /usr/bin/lsb_release ];
    then
      #`/usr/bin/lsb_release -r` > $stack_output
-     echo `/usr/bin/lsb_release -r`
+     echo `/usr/bin/lsb_release -r` >> $stack_output
      is_debian=1 #0 = no 1 = yes
      #
      # Specify OS variables
@@ -48,11 +56,6 @@ fi
 
 #fi
 
-# Initialize file
-echo "Islandora Stack Inventory" > $stack_output
-echo "=========================" >> $stack_output
-echo " " >> $stack_output
-echo " " >> $stack_output
 # Hardware
 cat /proc/cpuinfo | grep model\ name >> $stack_output
 cat /proc/cpuinfo | grep cpu\ cores >> $stack_output
