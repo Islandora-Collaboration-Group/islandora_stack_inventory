@@ -1,6 +1,6 @@
 #!/bin/bash
 # Islandora Stack Inventory - Web & Database Server
-stack_output="/tmp/stack_output.csv"
+stack_output="/tmp/stack_output.txt"
 is_redhat=0 #0 = no 1 = yes
 is_debian=0 #0 = no 1 = yes
 
@@ -47,6 +47,12 @@ fi
 #if [ $is_redhat] then
 
 #fi
+
+# Initialize file
+echo "Islandora Stack Inventory" > $stack_output
+echo "=========================" >> $stack_output
+echo " " >> $stack_output
+echo " " >> $stack_output
 # Hardware
 cat /proc/cpuinfo | grep model\ name >> $stack_output
 cat /proc/cpuinfo | grep cpu\ cores >> $stack_output
