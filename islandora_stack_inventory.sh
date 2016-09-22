@@ -143,7 +143,8 @@ echo "" >> $stack_output
 echo "Apache information" >> $stack_output
 echo "=================" >> $stack_output
 echo "" >> $stack_output
-$package_query | grep $apache >> $stack_output
+#$package_query | grep $apache >> $stack_output
+$apache -v >> $stack_output
 echo "" >> $stack_output
 
 ##- maven
