@@ -9,7 +9,7 @@ is_debian=0 #0 = no 1 = yes
 
 # Operating System
 # First check if system is a RHEL / CENTOS release
-if [ -f /etc/redhat-release ];
+if [ -e /etc/redhat-release ];
   then
     #`cat /etc/redhat-release` > $stack_output
      echo `cat /etc/redhat-release`
@@ -21,7 +21,7 @@ if [ -f /etc/redhat-release ];
      package_query=`rpm -qa`
 fi
 # If not, then now check if system is a Debian / Ubuntu release
-if  [ -f /usr/bin/lsb_release ];
+if  [ -e /usr/bin/lsb_release ];
    then
      #`/usr/bin/lsb_release -r` > $stack_output
      echo `/usr/bin/lsb_release -r`
