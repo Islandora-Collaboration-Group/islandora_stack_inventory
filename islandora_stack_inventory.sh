@@ -64,8 +64,7 @@ echo " " >> $stack_output
 echo " " >> $stack_output
 echo "Memory Info: " >> $stack_output
 echo " " >> $stack_output
-/bin/cat /proc/meminfo >> $stack_output
-/usr/bin/free -m >> $stack_output
+/bin/cat /proc/meminfo  | grep Mem* >> $stack_output
 
 # Software / Packages / Roles
 
@@ -73,6 +72,7 @@ echo " " >> $stack_output
 
 # Webserver Roles
 ##- env (environment_variables)
+
 #
 ##- mysql
 #
