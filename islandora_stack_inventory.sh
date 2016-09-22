@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 # Islandora Stack Inventory - Web & Database Server
 stack_output="/tmp/stack_output.txt"
 is_redhat=0 #0 = no 1 = yes
@@ -59,8 +59,8 @@ fi
 #fi
 
 # Hardware
-cat /proc/cpuinfo | grep model\ name >> $stack_output
-cat /proc/cpuinfo | grep cpu\ cores >> $stack_output
+/bin/cat /proc/cpuinfo | grep model\ name >> $stack_output
+/bin/cat /proc/cpuinfo | grep cpu\ cores >> $stack_output
 
 # Memory
 # cat /proc /meminfo
