@@ -60,6 +60,10 @@ echo " " >> $stack_output
 /bin/cat /proc/cpuinfo | grep cpu\ cores >> $stack_output
 
 # Memory
+echo " " >> $stack_output
+echo " " >> $stack_output
+echo "Memory Info: " >> $stack_output
+echo " " >> $stack_output
 /bin/cat /proc/meminfo >> $stack_output
 /usr/bin/free -m >> $stack_output
 
