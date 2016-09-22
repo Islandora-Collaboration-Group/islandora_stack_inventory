@@ -29,9 +29,8 @@ if [ -e /etc/redhat-release ];
      php_ini="/etc/php.ini"
      package_query="rpm -qa"
      apache="httpd"
-fi
 # If not, then now check if system is a Debian / Ubuntu release
-if  [ -e /usr/bin/lsb_release ];
+elif  [ -e /usr/bin/lsb_release ];
    then
      #`/usr/bin/lsb_release -r` > $stack_output
      echo `/usr/bin/lsb_release -d` >> $stack_output
@@ -42,22 +41,12 @@ if  [ -e /usr/bin/lsb_release ];
      php_ini="/etc/php5/apache2/php.ini"
      package_query="dpkg -l"
      apache="apache2"
+else
+
+	echo "operating system is not known"
+	echo "rhel or debian not found.. exiting"
+	exit 1
 fi
-
-#if [ ! is_redhat | ! is_debian ]
-#    then
-#	echo "operating system is not known"
-#	echo "rhel or debian not found.. exiting"
-#	exit 1
-#fi
-
-#if [ $is_redhat] then
-
-#fi
-
-#if [ $is_redhat] then
-
-#fi
 
 # Hardware
 /bin/cat /proc/cpuinfo | grep model\ name >> $stack_output
