@@ -34,7 +34,7 @@ fi
 if  [ -e /usr/bin/lsb_release ];
    then
      #`/usr/bin/lsb_release -r` > $stack_output
-     echo `/usr/bin/lsb_release -r` >> $stack_output
+     echo `/usr/bin/lsb_release -d` >> $stack_output
      is_debian=1 #0 = no 1 = yes
      #
      # Specify OS variables
