@@ -49,6 +49,13 @@ else
 fi
 
 # Hardware
+echo " " >> $stack_output
+echo "Hardware Information" >> $stack_output
+echo "====================" >> $stack_output
+echo " " >> $stack_output
+echo " " >> $stack_output
+echo "CPU Info: " >> $stack_output
+echo " " >> $stack_output
 /bin/cat /proc/cpuinfo | grep model\ name >> $stack_output
 /bin/cat /proc/cpuinfo | grep cpu\ cores >> $stack_output
 
