@@ -18,6 +18,7 @@ if [ -f /etc/redhat-release ];
      # Specify OS variables
      #
      php_ini="/etc/php.ini"
+     package_query=`rpm -qa`
 fi
 # If not, then now check if system is a Debian / Ubuntu release
 if  [ -f /usr/bin/lsb_release ];
@@ -29,6 +30,7 @@ if  [ -f /usr/bin/lsb_release ];
      # Specify OS variables
      #
      php_ini="/etc/php5/apache2/php.ini"
+     package_query=`dpkg -l`
 fi
 
 #if [ ! is_redhat | ! is_debian ]
@@ -60,13 +62,22 @@ cat /proc/cpuinfo | grep cpu\ cores
 
 # Webserver Roles
 ##- env (environment_variables)
+#
 ##- mysql
+#
+echo "MySQL information" >> $stack_output
+echo "=================" >> $stack_output
+echo "" >> $stack_output
+mysql --version >> $stack_output
+echo "" >> $stack_output
+
 ##- openjdk
 ##- oracle_java
 ##- apache
 
+#
 ##- php
-# Check PHP version
+#
 echo "PHP information" >> $stack_output
 echo "===============" >> $stack_output
 echo "" >> $stack_output
@@ -74,9 +85,25 @@ php --version >> $stack_output
 echo "" >> $stack_output
 grep memory_limit $php_ini
 grep upload_max_filesize $php_ini
+echo "" >> $stack_output
 
+#
 ##- ghostscript
+#
+echo "Ghostscript information" >> $stack_output
+echo "=======================" >> $stack_output
+echo "" >> $stack_output
+gs --version >> $stack_output
+echo "" >> $stack_output
+#
 ##- imagemagick
+#
+echo "ImageMagick information" >> $stack_output
+echo "=======================" >> $stack_output
+echo "" >> $stack_output
+$package_query | grep ImageMagick >> $stack_output
+echo "" >> $stack_output
+
 ##- bibutils
 ##- exif
 ##- xpdf
