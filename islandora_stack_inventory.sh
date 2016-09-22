@@ -38,8 +38,13 @@ fi
 
 #fi
 # Hardware
+<<<<<<< HEAD
 ##cat /proc/cpuinfo | grep model_name
 ##cat /proc/cpuinfo | grep cpu_cores
+=======
+cat /proc/cpuinfo | grep model\ name
+cat /proc/cpuinfo | grep cpu\ cores
+>>>>>>> 8d2fe20f65b23174e6bbe3535c73a46a8567dda6
 
 # Memory
 # cat /proc /meminfo
