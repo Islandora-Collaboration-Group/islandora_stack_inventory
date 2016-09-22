@@ -9,18 +9,26 @@ is_debian=0 #0 = no 1 = yes
 
 # Operating System
 # First check if system is a RHEL / CENTOS release
-if [ -f /etc/redhat-release ]
+if [ -f /etc/redhat-release ];
   then
     #`cat /etc/redhat-release` > $stack_output
      echo `cat /etc/redhat-release`
      is_redhat=1 #0 = no 1 = yes
+     #
+     # Specify OS variables
+     #
+     php_ini="/etc/php.ini"
 fi
 # If not, then now check if system is a Debian / Ubuntu release
-if  [ -f /usr/bin/lsb_release ]
+if  [ -f /usr/bin/lsb_release ];
    then
      #`/usr/bin/lsb_release -r` > $stack_output
-    echo `/usr/bin/lsb_release -r`
-    is_debian=1 #0 = no 1 = yes
+     echo `/usr/bin/lsb_release -r`
+     is_debian=1 #0 = no 1 = yes
+     #
+     # Specify OS variables
+     #
+     php_ini="/etc/php5/apache2/php.ini"
 fi
 
 #if [ ! is_redhat | ! is_debian ]
@@ -59,13 +67,13 @@ cat /proc/cpuinfo | grep cpu\ cores
 
 ##- php
 # Check PHP version
-##echo "PHP information" >> $stack_output
-##echo "===============" >> $stack_output
-##echo "" >> $stack_output
-##php --version >> $stack_output
-##echo "" >> $stack_output
-##grep memory_limit $php_ini
-##grep upload_max_filesize $php_ini
+echo "PHP information" >> $stack_output
+echo "===============" >> $stack_output
+echo "" >> $stack_output
+php --version >> $stack_output
+echo "" >> $stack_output
+grep memory_limit $php_ini
+grep upload_max_filesize $php_ini
 
 ##- ghostscript
 ##- imagemagick
