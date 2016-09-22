@@ -24,8 +24,8 @@ elif [[ -x /usr/bin/lsb_release ]];
 fi
 
 # Hardware
-cat /proc/cpuinfo | grep model_name
-cat /proc/cpuinfo | grep cpu_cores
+cat /proc/cpuinfo | grep model\ name
+cat /proc/cpuinfo | grep cpu\ cores
 
 # Memory
 # cat /proc /meminfo
