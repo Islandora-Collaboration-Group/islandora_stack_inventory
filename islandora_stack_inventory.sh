@@ -27,6 +27,7 @@ if [ -e /etc/redhat-release ];
      #
      php_ini="/etc/php.ini"
      package_query="rpm -qa"
+     apache="httpd"
 fi
 # If not, then now check if system is a Debian / Ubuntu release
 if  [ -e /usr/bin/lsb_release ];
@@ -39,6 +40,7 @@ if  [ -e /usr/bin/lsb_release ];
      #
      php_ini="/etc/php5/apache2/php.ini"
      package_query="dpkg -l"
+     apache="apache2"
 fi
 
 #if [ ! is_redhat | ! is_debian ]
@@ -136,6 +138,14 @@ echo "" >> $stack_output
 ##- env (environment_variables)
 ##- mysqlclient
 ##- apache
+echo "" >> $stack_output
+echo "" >> $stack_output
+echo "Apache information" >> $stack_output
+echo "=================" >> $stack_output
+echo "" >> $stack_output
+$package_query | grep $apache >> $stack_output
+echo "" >> $stack_output
+
 ##- maven
 ##- oracle_java
 ##- tomcat
